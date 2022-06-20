@@ -73,7 +73,8 @@ class Notes(object):
         
     
     def updateTasks(self, tarefas):
-        self.db.execute_query('MATCH (t:Task {tarefa:$tarefa}) SET n.tarefa = $newTarefa',
+        self.db.execute_query(
+            'MATCH (t:Task {tarefa:$tarefa}) SET t.tarefa = $newTarefa',
                                      {'tarefa': tarefas['tarefa'], 'newTarefa': tarefas['newTarefa']})
         return "Tarefa atualizada"
     #DELETE
